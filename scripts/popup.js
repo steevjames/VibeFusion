@@ -40,11 +40,11 @@ async function stopLoadingAnimation() {
 async function onRedesignButtonClick() {
   // Get the active tab
   const tabs = await new Promise((resolve, reject) => {
-        chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
-            if (chrome.runtime.lastError) reject(chrome.runtime.lastError);
-            else resolve(tabs);
-        });
+    chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
+      if (chrome.runtime.lastError) reject(chrome.runtime.lastError);
+      else resolve(tabs);
     });
+  });
   // Send message to background process to modify page content
   chrome.runtime.sendMessage({ action: 'modifyPageContent', newValue: tabs });
 }
@@ -59,6 +59,23 @@ async function initPage() {
     document.getElementById('tokenSection').style.display = 'flex';
     document.getElementById('buttonGroup').style.display = 'none';
   }
+  // Set loading animation based on whether its already loading
+  let loadingStatus = await new Promise((resolve, reject) => {
+    chrome.runtime.sendMessage({ action: "getLoadingStatus" }, function (response) {
+      if (chrome.runtime.lastError) {
+        reject(chrome.runtime.lastError);
+      } else {
+        resolve(response);
+      }
+    });
+  });
+  if (loadingStatus && loadingStatus.isLoading) {
+    startLoadingAnimation();
+  }
+  else {
+    stopLoadingAnimation();
+  }
+
 }
 
 document.addEventListener('DOMContentLoaded', async function () {

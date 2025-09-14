@@ -12,7 +12,7 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
     let targetElement = document.body;
 
     if(message.newValue === "FAILED"){
-      alert("Redesign Failed. Please try again.");
+      console.log("Redesign Failed. Please try again.");
     }
     else if (targetElement) {
       targetElement.outerHTML = message.newValue;

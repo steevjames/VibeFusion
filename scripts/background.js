@@ -1,3 +1,5 @@
+let isLoading = false;
+
 // Get AI token from local storage
 async function getTokenFromLocalStorage() {
     const result = await chrome.storage.local.get(["openaiToken"]);
@@ -59,12 +61,15 @@ async function reDesignPage(tabs) {
 
     // Start loading animation
     chrome.runtime.sendMessage({ action: "startLoading" });
+    isLoading = true;
+
 
     let bodyContent = response.value;
     let redesignedContent = await getRedesignedPage(bodyContent);
 
     // Stop loading animation
     chrome.runtime.sendMessage({ action: "stopLoading" });
+    isLoading = false;
 
     // Pass message to page to update the page with redesigned content
     if (redesignedContent) {
@@ -82,5 +87,8 @@ chrome.runtime.onMessage.addListener(async (message, sender, sendResponse) => {
     if (message.action === 'modifyPageContent') {
         const tabs = message.newValue;
         reDesignPage(tabs);
+    }
+    if (message.action === 'getLoadingStatus') {
+        sendResponse({ isLoading: isLoading });
     }
 });
