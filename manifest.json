@@ -1,6 +1,6 @@
 {
-    "name": "Inject code",
-    "description": "Adding some code to the current page",
+    "name": "VibeFusion",
+    "description": "AI-powered Chrome extension that lets you edit pages with style, speed and most importantly, the vibes.",
     "version": "1.0",
     "manifest_version": 3,
     "permissions": [

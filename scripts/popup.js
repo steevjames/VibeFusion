@@ -31,7 +31,7 @@ async function fetchAIResponse(prompt) {
   myHeaders.append("Authorization", "Bearer " + token);
 
   const raw = JSON.stringify({
-    "model": "gpt-5",
+    "model": "gpt-5-nano",
     "input": prompt
   });
 

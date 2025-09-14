@@ -9,6 +9,25 @@ VibeFusion is an AI-powered Chrome extension that lets you redesign any website 
 - **Preserves Content:** Keeps the original text and information intact.
 - **Simple Interface:** Easy to use, with a minimal and intuitive popup.
 
+## Screenshots
+
+| VibeFusion Extension Screenshots |
+| --- |
+| <img src="screenshots/VibeFusion-Main-Screenshot-min.jpg" alt="VibeFusion Main Screenshot" width="500px"> |
+
+
+| Before & After Screenshots | |
+| --- | --- |
+| Berkshire Hathaway Website | Example.com |
+| <img src="screenshots/BerkshireEdited-min.jpg" alt="Berkshire Hathaway Before"> | <img src="screenshots/ExampleEdited-min.jpg" alt="Berkshire Hathaway After"> |
+|  |  |
+| IRCTC Inquiry | SSI Homepage |
+| <img src="screenshots/IRCTCEdited-min.jpg" alt="IRCTC Before"> | <img src="screenshots/SSIEdited-min.jpg" alt="SSI After"> |
+
+## Demo Video
+
+[![VibeFusion Demo Video](https://img.youtube.com/vi/ZZk6e4nsx4o/0.jpg)](https://youtu.be/ZZk6e4nsx4o?si=P6XhwKTziAtNKoXW)
+
 ## How to Use
 
 1.  **Add your OpenAI API Token:**
