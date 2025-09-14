@@ -1,7 +1,7 @@
 // Get AI token from local storage
 async function getTokenFromLocalStorage() {
-  const result = await chrome.storage.local.get(["openaiToken"]);
-  return result.openaiToken;
+    const result = await chrome.storage.local.get(["openaiToken"]);
+    return result.openaiToken;
 }
 
 async function fetchAIResponse(prompt) {
@@ -37,11 +37,11 @@ async function getRedesignedPage(bodyContent) {
             const responseText = response.output.find(part => part.status === "completed").content.find(item => item.type === "output_text").text;
             return responseText;
         } else {
-            alert("An Error Occurred in Chrome Extension");
+            chrome.runtime.sendMessage({ action: "HandleError", error: "An Error Occurred in Chrome Extension" });
         }
     }
     else {
-        alert("The website is too large to be redesigned (" + bodyContent.length + "). Please try a smaller website.");
+        chrome.runtime.sendMessage({ action: "HandleError", error: "The website is too large to be redesigned (" + bodyContent.length + "). Please try a smaller website." });
     }
 
     return "FAILED";

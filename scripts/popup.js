@@ -96,5 +96,8 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
   if (message.action === "stopLoading") {
     stopLoadingAnimation();
   }
+  if (message.action === "HandleError") {
+    alert(message.error);
+  }
 });
 
