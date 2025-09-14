@@ -11,9 +11,10 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
   if (message.action === "redesignPage") {
     let targetElement = document.body;
 
-    console.log(message);
-
-    if (targetElement) {
+    if(message.newValue === "FAILED"){
+      alert("Redesign Failed. Please try again.");
+    }
+    else if (targetElement) {
       targetElement.outerHTML = message.newValue;
       const pageTitle = document.title;
       // Remove the existing head tag
