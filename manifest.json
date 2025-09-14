@@ -1,0 +1,29 @@
+{
+    "name": "Inject code",
+    "description": "Adding some code to the current page",
+    "version": "1.0",
+    "manifest_version": 3,
+    "permissions": [
+        "storage"
+    ],
+    "action": {
+        "default_popup": "popup.html",
+        "default_icon": "images/vibeIcon2.png"
+    },
+    "icons": {
+        "16": "images/vibeIcon2.png",
+        "32": "images/vibeIcon2.png",
+        "48": "images/vibeIcon2.png",
+        "128": "images/vibeIcon2.png"
+    },
+    "content_scripts": [
+        {
+            "js": [
+                "scripts/content.js"
+            ],
+            "matches": [
+                "<all_urls>"
+            ]
+        }
+    ]
+}
