@@ -33,7 +33,7 @@ async function fetchAIResponse(prompt) {
 }
 
 async function getRedesignedPage(bodyContent) {
-    if (bodyContent.length < 10000) {
+    if (bodyContent.length < 20000) {
         const response = await fetchAIResponse("Redesign the website will full creative freedom. Change the layout, body and theme to something very different but retain the text content. The response should strictly be outerHTML of the body element similar to input. Change all ID's and class name and strictly specify all styles inline so that existing styling applied from head tag doesnt override the styling. Here is the content of the website to be redesigned:" + bodyContent);
         if (response.status == "completed") {
             const responseText = response.output.find(part => part.status === "completed").content.find(item => item.type === "output_text").text;
