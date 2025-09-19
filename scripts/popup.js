@@ -73,7 +73,7 @@ async function initPage() {
     startLoadingAnimation();
   }
   else {
-    stopLoadingAnimation();
+    initPage();
   }
 
 }
