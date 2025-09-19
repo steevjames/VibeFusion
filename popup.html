@@ -1,185 +1,32 @@
-<html>
-
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VibeFusion</title>
+    <link rel="stylesheet" href="styles/popup.css">
+</head>
 <body>
     <img src="images/vibeIcon2.png" alt="VibeFusion Logo" id="logo">
     <h1 id="title">VibeFusion</h1>
     <p id="subtitle">Redesign websites with AI</p>
 
-
     <div id="tokenSection">
-        <input type="text" id="tokenInput" placeholder="Enter OpenAI API token" />
-        <button id="tokenSaveButton">Save</button>
+        <input type="text" id="tokenInput" placeholder="Enter OpenAI API token">
+        <button id="tokenSaveButton" class="btn btn-primary">Save Token</button>
     </div>
 
     <div id="buttonGroup">
-        <button id="redesignButton">Redesign Website</button>
-        <button id="clearTokenButton">
-            <svg class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 24 24" fill="none">
-                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                    d="M20 12H8m12 0-4 4m4-4-4-4M9 4H7a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h2" />
+        <button id="redesignButton" class="btn btn-primary">Redesign Website</button>
+        <button id="clearTokenButton" title="Clear Token">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash3" viewBox="0 0 16 16">
+                <path d="M6.5 1h3a.5.5 0 0 1 .5.5v1H6v-1a.5.5 0 0 1 .5-.5ZM11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3A1.5 1.5 0 0 0 5 1.5v1H2.506a.58.58 0 0 0-.01 0H1.5a.5.5 0 0 0 0 1h.538l.853 10.66A2 2 0 0 0 4.885 16h6.23a2 2 0 0 0 1.994-1.84l.853-10.66h.538a.5.5 0 0 0 0-1h-.995a.59.59 0 0 0-.01 0H11Zm-6.564 1.5.853 10.66A1 1 0 0 0 4.885 15h6.23a1 1 0 0 0 .995-.934l.853-10.66H4.436ZM5.5 5.5a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0v-6a.5.5 0 0 1 .5-.5Zm3 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0v-6a.5.5 0 0 1 .5-.5Zm3 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0v-6a.5.5 0 0 1 .5-.5Z"/>
             </svg>
         </button>
     </div>
 
-    <div>
-        <div id="spinner" class="spinner"></div>
-    </div>
+    <div id="spinner" class="spinner"></div>
 
     <script src="scripts/popup.js"></script>
-
-    <style>
-        body,
-        html {
-            margin: 0;
-            padding: 10px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            width: 300px;
-            height: 280px;
-            overflow: auto;
-        }
-
-        #logo {
-            width: 60px;
-            height: 60px;
-            margin-bottom: 10px;
-        }
-
-        #title {
-            color: #333;
-            font-size: 22px;
-        }
-
-        #subtitle {
-            margin-bottom: 20px;
-            font-style: italic;
-        }
-
-        #tokenInput {
-            padding: 12px 10px;
-            margin-bottom: 15px;
-            border: 1px solid #ccc;
-            border-radius: 8px;
-            font-size: 11px;
-            transition: border-color 0.3s;
-            ;
-        }
-
-        #tokenSaveButton {
-            background: linear-gradient(135deg, #4c7daf, #45a049);
-            color: white;
-            border: none;
-            padding: 10px 17px;
-            font-size: 13px;
-            border-radius: 8px;
-            cursor: pointer;
-            margin-bottom: 20px;
-        }
-
-        #buttonGroup {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            display: none;
-        }
-
-        #tokenSection {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            display: none;
-        }
-
-        #clearTokenButton {
-            width: 30px;
-            height: 30px;
-            background: linear-gradient(45deg, #870808, #390303);
-            color: white;
-            border: none;
-            border-radius: 8px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            transition: background-color 0.2s;
-            transform: translate(0%, -35%);
-        }
-
-        #redesignButton {
-            background: linear-gradient(135deg, #4c7daf, #45a049);
-            color: white;
-            border: none;
-            padding: 10px 17px;
-            font-size: 13px;
-            border-radius: 8px;
-            cursor: pointer;
-            margin-bottom: 20px;
-        }
-
-        #redesignButton:hover {
-            background: linear-gradient(135deg, #45a049, #4c7daf);
-        }
-
-        .spinner {
-            width: 30px;
-            height: 30px;
-            border-radius: 50%;
-            border: 5px solid #45a049;
-            display: none;
-            animation: spinner-bulqg1 0.8s infinite linear alternate,
-                spinner-oaa3wk 1.6s infinite linear;
-        }
-
-        @keyframes spinner-bulqg1 {
-            0% {
-                clip-path: polygon(50% 50%, 0 0, 50% 0%, 50% 0%, 50% 0%, 50% 0%, 50% 0%);
-            }
-
-            12.5% {
-                clip-path: polygon(50% 50%, 0 0, 50% 0%, 100% 0%, 100% 0%, 100% 0%, 100% 0%);
-            }
-
-            25% {
-                clip-path: polygon(50% 50%, 0 0, 50% 0%, 100% 0%, 100% 100%, 100% 100%, 100% 100%);
-            }
-
-            50% {
-                clip-path: polygon(50% 50%, 0 0, 50% 0%, 100% 0%, 100% 100%, 50% 100%, 0% 100%);
-            }
-
-            62.5% {
-                clip-path: polygon(50% 50%, 100% 0, 100% 0%, 100% 0%, 100% 100%, 50% 100%, 0% 100%);
-            }
-
-            75% {
-                clip-path: polygon(50% 50%, 100% 100%, 100% 100%, 100% 100%, 100% 100%, 50% 100%, 0% 100%);
-            }
-
-            100% {
-                clip-path: polygon(50% 50%, 50% 100%, 50% 100%, 50% 100%, 50% 100%, 50% 100%, 0% 100%);
-            }
-        }
-
-        @keyframes spinner-oaa3wk {
-            0% {
-                transform: scaleY(1) rotate(0deg);
-            }
-
-            49.99% {
-                transform: scaleY(1) rotate(135deg);
-            }
-
-            50% {
-                transform: scaleY(-1) rotate(0deg);
-            }
-
-            100% {
-                transform: scaleY(-1) rotate(-135deg);
-            }
-        }
-    </style>
 </body>
-
 </html>

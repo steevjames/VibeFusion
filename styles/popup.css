@@ -1,0 +1,135 @@
+/* styles/popup.css */
+body {
+    margin: 0;
+    padding: 20px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #fff;
+    color: #000;
+    width: 320px;
+    text-align: center;
+    box-sizing: border-box;
+}
+
+#logo {
+    width: 50px;
+    height: 50px;
+    margin-bottom: 15px;
+}
+
+#title {
+    font-size: 20px;
+    font-weight: 600;
+    margin: 0 0 5px 0;
+}
+
+#subtitle {
+    font-size: 13px;
+    color: #444;
+    margin: 0 0 25px 0;
+}
+
+#tokenSection, #buttonGroup {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    gap: 15px;
+}
+
+#tokenInput {
+    width: 100%;
+    padding: 10px;
+    font-size: 12px;
+    background-color: #fff;
+    border: 1px solid #999;
+    border-radius: 8px;
+    color: #000;
+    box-sizing: border-box;
+}
+
+#tokenInput::placeholder {
+    color: #888;
+}
+
+.btn {
+    width: 100%;
+    padding: 10px;
+    font-size: 14px;
+    font-weight: 500;
+    margin-bottom: 20px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.1s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.btn:hover {
+    transform: translateY(-2px);
+}
+
+.btn-primary {
+    background-color: #0078d4;
+    color: white;
+}
+
+.btn-primary:hover {
+    background-color: #005a9e;
+}
+
+.btn-danger {
+    background-color: #d43535;
+    color: white;
+}
+
+.btn-danger:hover {
+    background-color: #a92929;
+}
+
+#buttonGroup {
+    display: none; /* Hidden by default */
+}
+
+#clearTokenButton {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    width: 37px;
+    height: 37px;
+    padding: 0;
+    background-color: #fff;
+    border-radius: 50%;
+    border: 1px solid #777;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#clearTokenButton svg {
+    fill: #888;
+}
+
+#clearTokenButton:hover {
+    background-color: #eee;
+}
+
+.spinner {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    border: 4px solid #fff;
+    border-top-color: #0078d4;
+    display: none;
+    animation: spin 1s linear infinite;
+    margin: 20px auto;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
