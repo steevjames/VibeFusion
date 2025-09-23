@@ -32,9 +32,12 @@ async function fetchAIResponse(prompt) {
     }
 }
 
-async function getRedesignedPage(bodyContent) {
+async function getRedesignedPage(bodyContent, userPrompt) {
     if (bodyContent.length < 20000) {
-        const response = await fetchAIResponse("Redesign the website will full creative freedom. Change the layout, body and theme to something very different but retain the text content. The response should strictly be outerHTML of the body element similar to input. Change all ID's and class name and strictly specify all styles inline so that existing styling applied from head tag doesnt override the styling. Here is the content of the website to be redesigned:" + bodyContent);
+        const promptTemplate = "Redesign the website will full creative freedom. Change the layout, body and theme to something very different but retain the text content. IMPORTANT: The response should strictly be outerHTML of the body element similar to input. Strictly specify all styles inline";
+        const llmPrompt = `${promptTemplate}. \n ${userPrompt && userPrompt.trim().length > 0 ? 'Additional Instructions: ' + userPrompt : ''} \n Here is the content of the website to be redesigned: ${bodyContent}`;
+        // return llmPrompt;
+        const response = await fetchAIResponse(llmPrompt);
         if (response.status == "completed") {
             const responseText = response.output.find(part => part.status === "completed").content.find(item => item.type === "output_text").text;
             return responseText;
@@ -46,11 +49,12 @@ async function getRedesignedPage(bodyContent) {
         chrome.runtime.sendMessage({ action: "HandleError", error: "The website is too large to be redesigned (" + bodyContent.length + "). Please try a smaller website." });
     }
 
+    // return "<body style='background-color: black;color: white;'>testing this is a test</body>";
     return "FAILED";
 }
 
 
-async function reDesignPage(tabs) {
+async function reDesignPage(tabs, prompt) {
     // Send message to the tab to get body content
     const response = await new Promise((resolve, reject) => {
         chrome.tabs.sendMessage(tabs[0].id, { action: "getBodyContent" }, (res) => {
@@ -65,7 +69,7 @@ async function reDesignPage(tabs) {
 
 
     let bodyContent = response.value;
-    let redesignedContent = await getRedesignedPage(bodyContent);
+    let redesignedContent = await getRedesignedPage(bodyContent, prompt);
 
     // Stop loading animation
     chrome.runtime.sendMessage({ action: "stopLoading" });
@@ -86,7 +90,8 @@ async function reDesignPage(tabs) {
 chrome.runtime.onMessage.addListener(async (message, sender, sendResponse) => {
     if (message.action === 'modifyPageContent') {
         const tabs = message.newValue;
-        reDesignPage(tabs);
+        const prompt = message.prompt;
+        reDesignPage(tabs, prompt);
     }
     if (message.action === 'getLoadingStatus') {
         sendResponse({ isLoading: isLoading });

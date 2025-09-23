@@ -45,8 +45,9 @@ async function onRedesignButtonClick() {
       else resolve(tabs);
     });
   });
+  const prompt = document.getElementById('promptInput').value;
   // Send message to background process to modify page content
-  chrome.runtime.sendMessage({ action: 'modifyPageContent', newValue: tabs });
+  chrome.runtime.sendMessage({ action: 'modifyPageContent', newValue: tabs, prompt: prompt });
 }
 
 async function initPage() {
