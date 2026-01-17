@@ -1,6 +1,6 @@
 # <img src="images/vibeIcon2.png" alt="VibeFusion Logo" width="32" height="32"> VibeFusion
 
-VibeFusion is an AI-powered Chrome extension that lets you redesign any website with a single click. Using the power of OpenAI, this extension can change the layout, style, and theme of a webpage while preserving the original content.
+VibeFusion is an AI-powered Chrome extension that lets you redesign any website with a single click and a user prompt. Using the power of AI, this extension can change the layout, style, and theme of a webpage while preserving the original content.
 
 ## Features
 
